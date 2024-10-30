@@ -26,8 +26,16 @@
       <h3 class="navbar__h3">arch.ve</h3>
 
       <form action="" class="navbar__form">
-        <input type="text" class="navbar__user" placeholder="User" />
-        <input type="password" class="navbar__password" placeholder="Pin" />
+        <input
+          type="text"
+          class="navbar__user navbar__user--input"
+          placeholder="User"
+        />
+        <input
+          type="password"
+          class="navbar__password navbar__password--input"
+          placeholder="Pin"
+        />
         <button class="navbar__btn">
           <i class="fa-solid fa-arrow-right-long"></i>
         </button>
@@ -38,11 +46,11 @@
     <main class="app container">
       <!--Introduction and Overall Balance-->
       <div class="app__balance-row">
-        <h1 class="app__h1">Good day, John Doe!</h1>
+        <h1 class="app__h1 app__welcome">Good day, John Doe!</h1>
         <div class="app__balance-container">
           <p class="app__current-text">Current Balance</p>
           <p class="app__balance-date">As of 21/10/2024, 12:31</p>
-          <h1 class="app__text-overall">PHP 25952.59</h1>
+          <h1 class="app__text-overall app__balance--value">PHP 25952.59</h1>
         </div>
       </div>
 
@@ -126,7 +134,7 @@
                 name="amount"
                 placeholder="Pin"
               />
-              <button class="transaction__btn">
+              <button class="transaction__btn transaction__btn--transfer">
                 <i class="fa-solid fa-arrow-right-long"></i>
               </button>
             </form>
@@ -142,7 +150,7 @@
                 name="request-amount"
                 placeholder="Amount"
               />
-              <button class="transaction__btn transaction__request-amount">
+              <button class="transaction__btn transaction__btn--request">
                 <i class="fa-solid fa-arrow-right-long"></i>
               </button>
             </form>
@@ -158,8 +166,13 @@
                 name="confirm-user"
                 placeholder="Username"
               />
-              <input type="number" id="pin" name="pin" placeholder="Pin" />
-              <button class="transaction__btn transaction__close-account">
+              <input
+                type="number"
+                id="confirm-pin"
+                name="pin"
+                placeholder="Pin"
+              />
+              <button class="transaction__btn transaction__btn--close">
                 <i class="fa-solid fa-arrow-right-long"></i>
               </button>
             </form>
