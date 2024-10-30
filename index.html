@@ -107,14 +107,59 @@
 
       <!--Transactions-->
       <div class="transaction">
-        <h2 class="transaction__h2">Transactions</h2>
-        <div class="transaction__item">
+        <h2>Transactions</h2>
+
+        <div class="transaction__grid">
+          <!--Transfer Money-->
           <div class="transaction__card">
-            <h5 class="transaction__h5">Transfer Money</h5>
-            <form action="" class="transaction__form">
-              <input type="text" id="transfer-to" name="transfer-to" />
-              <input type="text" id="amount" name="amount" />
+            <h5>Transfer Money</h5>
+            <form action="" class="transaction__form transfer-money">
+              <input
+                type="text"
+                id="transfer-to"
+                name="transfer-to"
+                placeholder="Transfer To"
+              />
+              <input
+                type="number"
+                id="transfer-amount"
+                name="amount"
+                placeholder="Pin"
+              />
               <button class="transaction__btn">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </form>
+          </div>
+
+          <!--REQUEST MONEY-->
+          <div class="transaction__card">
+            <h5>Request Money</h5>
+            <form action="" class="transaction__form request-money">
+              <input
+                type="number"
+                id="request-amount"
+                name="request-amount"
+                placeholder="Amount"
+              />
+              <button class="transaction__btn transaction__request-amount">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </form>
+          </div>
+
+          <!--Close Account-->
+          <div class="transaction__card">
+            <h5>Close Account</h5>
+            <form action="" class="transaction__form close-account">
+              <input
+                type="text"
+                id="confirm-user"
+                name="confirm-user"
+                placeholder="Username"
+              />
+              <input type="number" id="pin" name="pin" placeholder="Pin" />
+              <button class="transaction__btn transaction__close-account">
                 <i class="fa-solid fa-arrow-right-long"></i>
               </button>
             </form>
