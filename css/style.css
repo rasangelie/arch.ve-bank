@@ -159,13 +159,20 @@ nav {
 }
 
 .movements__type {
-  background-color: var(--deposit-color);
   font-size: 0.875rem;
   color: white;
   text-align: center;
   border-radius: 12px;
   font-weight: 500;
   padding: 0.2rem 0.8rem;
+}
+
+.movements__type--deposit {
+  background-color: var(--deposit-color);
+}
+
+.movements__type--withdrawal {
+  background-color: var(--withdrawal-color);
 }
 
 .movements__date {
@@ -206,8 +213,16 @@ nav {
 
 .summary__total {
   font-size: 2rem;
-  color: var(--deposit-color);
   font-weight: 400;
+}
+
+.summary__total--in,
+.summary__total--interest {
+  color: var(--deposit-color);
+}
+
+.summary__total--out {
+  color: var(--withdrawal-color);
 }
 
 .summary__btn {
