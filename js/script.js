@@ -39,6 +39,7 @@ const movementsAmount = document.querySelector(".movements__amount");
 const summaryIn = document.querySelector(".summary__total--in");
 const summaryOut = document.querySelector(".summary__total--out");
 const summaryInterest = document.querySelector(".summary__total--interest");
+const sortBtn = document.querySelector(".summary__btn");
 
 /**Transactions */
 const transferTo = document.getElementById("transfer-to");
@@ -52,9 +53,16 @@ const requestBtn = document.querySelector(".transaction__btn--request");
 const closeBtn = document.querySelector(".transaction__btn--close");
 
 //Display Movements
-const displayMovements = (mov) => {
+const displayMovements = (mov, sort = false) => {
   movementsContainer.innerHTML = "";
-  mov.forEach((mov, i) => {
+
+  const movSort = sort
+    ? mov.sort((a, b) => {
+        return a - b;
+      })
+    : mov;
+
+  movSort.forEach((mov, i) => {
     // console.log(`${curr}, ${index}`);
 
     const type = mov > 0 ? "deposit" : "withdrawal";
@@ -279,4 +287,15 @@ closeBtn.addEventListener("click", (e) => {
     //Change opacity to 0
     containerApp.style.opacity = 0;
   }
+});
+
+//Sorting
+let sorted = false;
+
+sortBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+  // console.log(sorted);
 });
