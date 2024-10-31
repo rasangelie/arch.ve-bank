@@ -18,10 +18,8 @@ const account2 = {
 const accounts = [account1, account2];
 
 /**Login */
-const userLogin = document.querySelector(".navbar__user--input").value;
-const userPin = Number(
-  document.querySelector(".navbar__password--input").value
-);
+const userLogin = document.querySelector(".navbar__user--input");
+const userPin = document.querySelector(".navbar__password--input");
 const loginBtn = document.querySelector(".navbar__btn");
 
 /**Main Container */
@@ -109,13 +107,12 @@ const createUsername = (acc) => {
 };
 
 createUsername(accounts);
-// console.log(accounts);
 
 //Calculating IN,OUT, INTEREST
 
-const summaryCalculation = (mov) => {
+const summaryCalculation = (account) => {
   //Ins
-  const ins = mov
+  const ins = account.movements
     .filter((mov) => {
       return mov > 0;
     })
@@ -126,7 +123,7 @@ const summaryCalculation = (mov) => {
   summaryIn.innerHTML = `PHP ${ins}`;
 
   //Out
-  const out = mov
+  const out = account.movements
     .filter((mov) => {
       return mov < 0;
     })
@@ -136,7 +133,55 @@ const summaryCalculation = (mov) => {
 
   summaryOut.innerHTML = `PHP ${out}`;
 
-  //Interest
+  //Interest;
+  const interest = account.movements
+    .filter((mov) => {
+      return mov > 0;
+    })
+    .map((deposit) => {
+      return (deposit * account.interestRate) / 100;
+    })
+    .filter((int, i, arr) => {
+      //filter interest that is lower 1
+      // console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, mov) => {
+      return acc + mov;
+    }, 0);
+
+  summaryInterest.innerHTML = `PHP ${interest}`;
 };
 
-summaryCalculation(account1.movements);
+summaryCalculation(account1);
+
+//////////////////////////
+//Event Handlers
+let currentAccount;
+
+//Login Functionality
+loginBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  //Find and check the currentUser if it fits
+  currentAccount = accounts.find((acc) => {
+    return acc.username === userLogin.value;
+  });
+
+  //Check if credential is correct then change the opacity
+  if (currentAccount?.pin === Number(userPin.value)) {
+    //Change the name
+    welcomeMessage.innerHTML = `Good day, ${
+      currentAccount.owner.split(" ")[0]
+    }!`;
+
+    //Change opacity
+    containerApp.style.opacity = 100;
+
+    //Remove inputs
+    userLogin.value = "";
+    userPin.value = "";
+  }
+
+  console.log(currentAccount);
+});
