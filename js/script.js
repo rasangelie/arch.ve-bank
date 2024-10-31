@@ -2,17 +2,24 @@
 
 // Data
 const account1 = {
-  owner: "Jonas Schmedtmann",
+  owner: "Hosh Manzano",
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
 };
 
 const account2 = {
-  owner: "Jessica Davis",
+  owner: "Ali Davis",
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
+};
+
+const account3 = {
+  owner: "Gol Lor",
+  movements: [25000, -900, 190, 890, -3510, -2000, 1500, 100],
+  interestRate: 1.5,
+  pin: 3333,
 };
 
 const accounts = [account1, account2];
@@ -57,7 +64,7 @@ const displayMovements = (mov, sort = false) => {
   movementsContainer.innerHTML = "";
 
   const movSort = sort
-    ? mov.sort((a, b) => {
+    ? mov.slice().sort((a, b) => {
         return a - b;
       })
     : mov;
@@ -68,8 +75,8 @@ const displayMovements = (mov, sort = false) => {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const message =
       mov > 0
-        ? "You deposited money successfully."
-        : "You withdrew money successfully.";
+        ? "Deposited money successfully."
+        : "Withdrew money successfully.";
     const html = `
     <div class="movements__row">
           <div class="movements__flex">
