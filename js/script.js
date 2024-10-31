@@ -254,7 +254,7 @@ requestBtn.addEventListener("click", (e) => {
   updateUi(currentAccount);
 });
 
-//Close
+//Close Account
 closeBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -263,6 +263,20 @@ closeBtn.addEventListener("click", (e) => {
     closeUser.value === currentAccount.username &&
     Number(closePin.value) === currentAccount.pin
   ) {
-    console.log(currentAccount);
+    //Find index
+    const index = accounts.findIndex((acc) => {
+      return acc.username === currentAccount.username;
+    });
+
+    //Delete the user using splice
+    accounts.splice(index, 1);
+    // console.log(accounts);
+
+    //Remove close fields
+    closeUser.value = "";
+    closePin.value = "";
+
+    //Change opacity to 0
+    containerApp.style.opacity = 0;
   }
 });
