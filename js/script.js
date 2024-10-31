@@ -253,3 +253,16 @@ requestBtn.addEventListener("click", (e) => {
   //Update UI
   updateUi(currentAccount);
 });
+
+//Close
+closeBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  //Check if correct credentials
+  if (
+    closeUser.value === currentAccount.username &&
+    Number(closePin.value) === currentAccount.pin
+  ) {
+    console.log(currentAccount);
+  }
+});
