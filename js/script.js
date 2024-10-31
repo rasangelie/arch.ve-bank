@@ -41,11 +41,11 @@ const summaryOut = document.querySelector(".summary__total--out");
 const summaryInterest = document.querySelector(".summary__total--interest");
 
 /**Transactions */
-const transferTo = document.getElementById("transfer-to").value;
-const transferAmount = Number(document.getElementById("transfer-amount").value);
-const requestAmount = Number(document.getElementById("request-amount").value);
-const closeUser = document.getElementById("confirm-user").value;
-const closePin = Number(document.getElementById("confirm-pin").value);
+const transferTo = document.getElementById("transfer-to");
+const transferAmount = document.getElementById("transfer-amount");
+const requestAmount = document.getElementById("request-amount");
+const closeUser = document.getElementById("confirm-user");
+const closePin = document.getElementById("confirm-pin");
 
 const transferBtn = document.querySelector(".transaction__btn--transfer");
 const requestBtn = document.querySelector(".transaction__btn--request");
@@ -86,18 +86,18 @@ const displayMovements = (mov) => {
   });
 };
 
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 
 //Display overall balance
-const calcDisplayBalance = (mov) => {
-  const balance = mov.reduce((acc, mov) => {
+const calcDisplayBalance = (account) => {
+  account.balance = account.movements.reduce((acc, mov) => {
     return acc + mov;
   }, 0);
 
-  overallBalance.innerHTML = `PHP ${balance}`;
+  overallBalance.textContent = `PHP ${account.balance}`;
 };
 
-calcDisplayBalance(account1.movements);
+// calcDisplayBalance(account1.movements);
 
 //Creating username
 const createUsername = (acc) => {
@@ -153,7 +153,14 @@ const summaryCalculation = (account) => {
   summaryInterest.innerHTML = `PHP ${interest}`;
 };
 
-summaryCalculation(account1);
+// summaryCalculation(account1);
+
+//Update UI function
+const updateUi = (acc) => {
+  displayMovements(acc.movements);
+  calcDisplayBalance(acc);
+  summaryCalculation(acc);
+};
 
 //////////////////////////
 //Event Handlers
@@ -178,10 +185,71 @@ loginBtn.addEventListener("click", (e) => {
     //Change opacity
     containerApp.style.opacity = 100;
 
-    //Remove inputs
+    //Clear fields
     userLogin.value = "";
     userPin.value = "";
+
+    //Update UI
+    updateUi(currentAccount);
   }
 
   console.log(currentAccount);
+});
+
+//User Transfer Money
+transferBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const amount = Number(transferAmount.value);
+
+  //Find the recipient
+  const receiver = accounts.find((rec) => {
+    return transferTo.value === rec.username;
+  });
+
+  //Check if currentAccount > 0, currentAccount not sending to him/herself, if sufficient
+  if (
+    currentAccount.balance > 0 &&
+    currentAccount.balance >= amount &&
+    receiver?.username !== currentAccount.username
+  ) {
+    // console.log("Transfer Valid");
+
+    //Add negative movement to current user
+    currentAccount.movements.push(-amount);
+
+    //Add positive movement to recipient
+    receiver.movements.push(amount);
+
+    //Remove input in fields
+    transferAmount.value = "";
+    transferTo.value = "";
+
+    //Update UI
+    updateUi(currentAccount);
+  }
+});
+
+//Request Money
+requestBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const amountReq = Number(requestAmount.value);
+
+  //Check any deposit > 10% of request
+  if (
+    amountReq > 0 &&
+    currentAccount.movements.some((mov) => {
+      return mov >= amountReq / 10;
+    })
+  ) {
+    //Add positive movement to current user
+    currentAccount.movements.push(amountReq);
+  }
+
+  //Remove input field
+  requestAmount.value = "";
+
+  //Update UI
+  updateUi(currentAccount);
 });

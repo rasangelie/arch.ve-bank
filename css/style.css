@@ -110,6 +110,7 @@ nav {
 .app__balance-container {
   background: var(--primary-color);
   padding: 1rem 2rem;
+  width: 400px;
   color: white;
   border-radius: 40px;
 }
