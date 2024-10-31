@@ -8,13 +8,13 @@ Welcome to Arch.ve Bank—a simple JavaScript app that lets you bank on the basi
 - **Remove Account:** Easily remove/delete account.
 - **Sort Transactions:** Quickly sort your transaction history by amount.
 
-## 🔑 Try It Out
+## 👉 Try It Out
 Use these test accounts to explore Arch.ve Bank:
 - **Username:** `hosh` | **Pin:** `1111`
 - **Username:** `ali` | **Pin:** `2222`
 - **Username:** `gol` | **Pin:** `3333`
 
-## 🔑 Future Plans
+## 🔮 Future Plans
 - **Account Creation:** Let users create their own accounts.
 - **Persistent Storage:** Store transactions in local storage for future sessions.
 - **Dates for Transactions:** Display dates to track transaction history accurately.
