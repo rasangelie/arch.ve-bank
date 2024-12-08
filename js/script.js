@@ -25,11 +25,13 @@ const account3 = {
 const accounts = [account1, account2];
 
 /**Login */
-const userLogin = document.querySelector(".navbar__user--input");
-const userPin = document.querySelector(".navbar__password--input");
-const loginBtn = document.querySelector(".navbar__btn");
+const userLogin = document.querySelector(".login__form--user");
+const userPin = document.querySelector(".login__form--pin");
+const loginBtn = document.querySelector(".login__form-btn");
+const loginContainer = document.querySelector(".login");
 
 /**Main Container */
+const body = document.querySelector("body");
 const containerApp = document.querySelector(".app");
 
 /**Welcome and Card Container */
@@ -196,6 +198,12 @@ loginBtn.addEventListener("click", (e) => {
     welcomeMessage.innerHTML = `Good day, ${
       currentAccount.owner.split(" ")[0]
     }!`;
+
+    //Hide Login Hero
+    loginContainer.classList.add("login--hidden");
+
+    //
+    containerApp.classList.remove("app--hidden");
 
     //Change opacity
     containerApp.style.opacity = 100;

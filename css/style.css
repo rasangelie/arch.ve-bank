@@ -42,6 +42,14 @@ body {
   padding: 0 2rem;
 }
 
+.btn {
+  padding: 1rem;
+  border: none;
+  border-radius: 28px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
 /* Navbar */
 
 nav {
@@ -56,7 +64,7 @@ nav {
   font-size: 2rem;
 }
 
-.navbar__form {
+/* .navbar__form {
   display: flex;
   gap: 1rem;
 }
@@ -69,15 +77,102 @@ nav {
   color: var(--secondary-color);
 
   font-family: inherit;
+} */
+
+.navbar__btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 28px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.navbar__btn-google {
+  background-color: var(--bg-color);
+  border: 1px solid #757575;
+  color: var(--secondary-color);
+}
+
+.navbar__form p {
+  text-align: right;
+  line-height: 1px;
+  color: var(--date-color);
 }
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
 }
 
-.navbar__btn {
+/* .navbar__btn {
   background: var(--bg-color);
   border: none;
+  cursor: pointer;
+} */
+
+/*Login Hero*/
+.login--hidden {
+  display: none;
+}
+
+.login {
+  padding: 3rem;
+  transition: all 2s;
+}
+
+.login__image img {
+  max-width: 600px;
+}
+
+.login__contents {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.login__forms {
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 20px;
+  width: 400px;
+}
+
+.login__form-content {
+  padding: 5rem 3rem;
+  text-align: center;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__form-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.login__form-content p {
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.login__form input {
+  border: 1px solid #757575;
+  border-radius: 28px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.login__form-btn {
+  border: none;
+  color: #fff;
+  margin-top: 1rem;
+  background-color: var(--primary-color);
+  padding: 0.8rem;
+  border-radius: 28px;
   cursor: pointer;
 }
 
@@ -86,10 +181,13 @@ nav {
   margin-top: 3rem;
   grid-template-columns: 1fr;
   gap: 1rem;
-
+  /* display: none; */
   /*To hide*/
   opacity: 0;
-  transition: all 1s;
+  transition: all 2s;
+}
+.app--hidden {
+  display: none;
 }
 
 .app__balance-row {
@@ -364,6 +462,14 @@ nav {
 
   .summary__total {
     font-size: 1.3rem;
+  }
+
+  .login__contents {
+    justify-content: center;
+  }
+
+  .login__image {
+    display: none;
   }
 }
 

@@ -26,7 +26,7 @@
     <nav class="navbar">
       <h3 class="navbar__h3">arch.ve</h3>
 
-      <form action="" class="navbar__form">
+      <!-- <form action="" class="navbar__form">
         <input
           type="text"
           class="navbar__user navbar__user--input"
@@ -40,11 +40,33 @@
         <button class="navbar__btn">
           <i class="fa-solid fa-arrow-right-long"></i>
         </button>
-      </form>
+      </form> -->
     </nav>
 
+    <!--Header-->
+    <header class="login container">
+      <div class="login__contents">
+        <div class="login__image">
+          <img src="./assets/illustration.png" alt="Archive Illustration" />
+        </div>
+
+        <div class="login__forms">
+          <div class="login__form-content">
+            <h3>Welcome back!</h3>
+            <p>Please enter the correct details</p>
+
+            <form action="#" class="login__form">
+              <input type="text" class="login__form--user" placeholder="User" />
+              <input type="number" class="login__form--pin" placeholder="Pin" />
+              <button type="submit" class="login__form-btn">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+
     <!--Main App-->
-    <main class="app container">
+    <main class="app container app--hidden">
       <!--Introduction and Overall Balance-->
       <div class="app__balance-row">
         <h1 class="app__h1 app__welcome">Good day, John Doe!</h1>
